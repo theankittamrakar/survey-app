@@ -21,7 +21,7 @@ function classNames(...classes) {
 
 
 export default function DefaultLayout() {
-  const { currentUser, userToken } = useStateContext();
+  const { currentUser, userToken, setCurrentUser, setUserToken } = useStateContext();
 
   if (!userToken) {
     return <Navigate to="login" />;
@@ -30,10 +30,10 @@ export default function DefaultLayout() {
   const logout = (ev) => {
     ev.preventDefault();
     console.log("Log out")
-    /* axiosClient.post("/logout").then((res) => {
-      setCurrentcurrentUser({});
-      setcurrentUserToken(null);
-    }); */
+    axiosClient.post("/logout").then((res) => {
+      setCurrentUser({});
+      setUserToken(null);
+    });
   };
   return (
     <>
